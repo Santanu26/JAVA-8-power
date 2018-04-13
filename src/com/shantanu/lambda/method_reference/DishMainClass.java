@@ -1,8 +1,11 @@
 package com.shantanu.lambda.method_reference;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.Arrays;
 import java.util.List;
-import static java.util.stream.Collectors.toList;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class DishMainClass {
 	public static void main(String[] args) {
@@ -53,6 +56,11 @@ public class DishMainClass {
 				  .mapToInt(Dish :: getCalories)
 				  .sum();
 		  System.out.println("Sum of the calories: "+calories);
+		  
+		  // convert int stream to Stream
+		  IntStream intStream = Dish.menu.stream().mapToInt(Dish :: getCalories);
+		  Stream<Integer> stream = intStream.boxed();
+		  
 	}
 
 }
