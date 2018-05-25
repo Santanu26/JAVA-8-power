@@ -2,6 +2,7 @@ package com.shantanu.lambda.comparing_imperative_style_functional_style;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,7 @@ public class GroupingTransaction {
 		groupFunctionally();
 	}
 	private static void groupImperatively() {
+		
 	      Map<Currency, List<Transaction>> transactionsByCurrencies = new HashMap<>();
 	        for (Transaction transaction : transactions) {
 	            Currency currency = transaction.getCurrency();
@@ -54,8 +56,9 @@ public class GroupingTransaction {
 	
 private static void groupFunctionally() {
 		Map<Currency , List<Transaction>> transactionsByCurrencies = transactions
-				.stream()
+				.stream().filter(transaction -> transaction.getValue() <=1000)
 				.collect(groupingBy(Transaction::getCurrency));
+		
 		
 		System.out.println(transactionsByCurrencies);
 	}

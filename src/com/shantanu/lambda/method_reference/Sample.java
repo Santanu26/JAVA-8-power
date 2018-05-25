@@ -16,10 +16,13 @@ public class Sample {
 		
 		Dish.menu.stream().forEach(System.out::print);
 		
-		Dish.menu.stream()
-		.filter(d ->d.getType() == Dish.Type.MEAT)
+		Dish.menu.parallelStream()
+		.filter(d ->d.getType() == Dish.Type.MEAT && d.getCalories()>150)
+		.filter(d->d.getName().equalsIgnoreCase("Beef123"))
 		.limit(2)
 		.collect(toList()).forEach(System.out::println);
+		
+		
 		
 
 	}

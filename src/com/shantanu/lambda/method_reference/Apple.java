@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data@NoArgsConstructor@AllArgsConstructor
-public class Apple {
+public class Apple{
 	private double weight;
 	private String color;
 
